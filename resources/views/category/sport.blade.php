@@ -1,0 +1,53 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="bg-gray-50 py-16 text-center border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-serif text-gray-900 tracking-wide mb-4">Sport Collection</h1>
+            <p class="text-gray-500 max-w-2xl mx-auto text-sm">
+                High-performance activewear designed for movement. Push your limits in style.
+            </p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col lg:flex-row gap-12">
+            
+            <aside class="w-full lg:w-64 flex-shrink-0">
+                <div class="sticky top-28">
+                    <h3 class="text-xs uppercase tracking-widest text-gray-900 font-semibold mb-6">Filter By</h3>
+                    <div class="mb-8 border-b border-gray-100 pb-6">
+                        <h4 class="text-sm text-gray-900 font-medium mb-4">Category</h4>
+                        <ul class="space-y-3 text-sm text-gray-500">
+                            <li><a href="#" class="hover:text-black transition text-black font-medium">All Activewear</a></li>
+                            <li><a href="#" class="hover:text-black transition">Tops & T-Shirts</a></li>
+                            <li><a href="#" class="hover:text-black transition">Shorts & Tights</a></li>
+                            <li><a href="#" class="hover:text-black transition">Jackets</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="flex-1">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                    
+                    <div class="group relative">
+                        <div class="w-full bg-gray-100 aspect-w-3 aspect-h-4 overflow-hidden h-[450px] relative">
+                            <img src="https://images.unsplash.com/photo-1518459031867-a89b944bffe4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Training Top" class="w-full h-full object-cover object-center group-hover:opacity-90 transition-opacity">
+                            <div class="absolute bottom-4 left-0 right-0 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+                                <button class="w-full bg-white text-black py-3 text-xs uppercase tracking-widest font-semibold shadow-lg hover:bg-black hover:text-white transition-colors">Quick Add</button>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex justify-between">
+                            <div>
+                                <h3 class="text-sm text-gray-900 font-medium"><a href="#">Aero Training Top</a></h3>
+                                <p class="mt-1 text-sm text-gray-500">Activewear</p>
+                            </div>
+                            <p class="text-sm font-medium text-gray-900">$45.00</p>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+@endsection
