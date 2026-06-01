@@ -1,24 +1,8 @@
-FROM php:8.2-apache
-
-# ដំឡើង extensions ដែលចាំបាច់សម្រាប់ Laravel
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    libpng-dev \
-    zip \
-    unzip \
-    git \
-    && docker-php-ext-install pdo pdo_pgsql pdo_mysql gd
-
-# បើក Apache rewrite module
-RUN a2enmod rewrite
-
-# កំណត់ផ្លូវទៅកាន់ public folder របស់ Laravel
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
-
 # ចម្លងកូដចូលទៅក្នុង Container
 COPY . /var/www/html
+
+# បង្កើត File .env ចេញពី .env.example ដើម្បីឱ្យ Laravel មានកន្លែងអានទិន្នន័យ
+RUN cp .env.example .env
 
 # ផ្ដល់សិទ្ធិឱ្យ Folder storage របស់ Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
@@ -30,4 +14,5 @@ RUN composer install --no-dev --optimize-autoloader
 WORKDIR /var/www/html
 
 EXPOSE 80
-CMD php artisan migrate --force && apache2-foreground
+
+CMD php artisan key:generate && php artisan config:clear && php artisan cache:clear && php artisan migrate --force && apache2-foreground
