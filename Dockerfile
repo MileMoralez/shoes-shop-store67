@@ -30,3 +30,4 @@ RUN composer install --no-dev --optimize-autoloader
 WORKDIR /var/www/html
 
 EXPOSE 80
+CMD php artisan migrate --force && apache2-foreground
